@@ -70,7 +70,7 @@ export function ProductCard({
         <h3 className="overflow-hidden text-base font-semibold leading-[1.2] tracking-normal text-wyze-text [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
           {product.title}
         </h3>
-        <p className="mt-2 font-medium min-h-[34px] overflow-hidden text-[11px] leading-[1.2] text-wyze-muted [display:-webkit-box] [overflow-wrap:anywhere] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+        <p className="mt-2 font-medium min-h-[34px] overflow-hidden text-[12px] leading-[1.2] text-[#1F1F1FBF] [display:-webkit-box] [overflow-wrap:anywhere] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
           {product.description}{" "}
           {product.learnMoreUrl ? (
             <a
