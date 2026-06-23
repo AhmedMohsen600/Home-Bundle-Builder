@@ -30,10 +30,9 @@ export function PriceBlock({
       {compareAt && compareAt > price ? (
         <s
           className={cx(
-            "font-normal",
             isReviewVariant
-              ? "text-[14px] leading-4 tracking-[0.005em] text-wyze-discount"
-              : "text-base text-wyze-card-discount",
+              ? "text-[14px] font-bold leading-4 tracking-[0.005em] text-wyze-discount"
+              : "font-normal text-base text-wyze-card-discount",
           )}
         >
           {formatPrice(compareAt)}
@@ -41,10 +40,10 @@ export function PriceBlock({
       ) : null}
       <p
         className={cx(
-          "mt-0.5 font-normal",
+          "mt-0.5",
           isReviewVariant
-            ? "text-[14px] leading-4 tracking-[0.005em] text-wyze-price"
-            : "text-base font-black text-wyze-card-price",
+            ? "text-[14px] font-semibold leading-4 tracking-[0.005em] text-wyze-price"
+            : "font-normal text-base font-black text-wyze-card-price",
           price === 0 && !isReviewVariant && "text-wyze-green",
         )}
       >
@@ -54,7 +53,7 @@ export function PriceBlock({
             className={cx(
               "ml-0.5",
               isReviewVariant
-                ? "text-[14px] leading-4 tracking-[0.005em] text-wyze-price"
+                ? "text-[14px] font-semibold leading-4 tracking-[0.005em] text-wyze-price"
                 : "text-base text-wyze-card-price",
             )}
           >
