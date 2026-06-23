@@ -142,13 +142,9 @@ export function StepSection({
               className="mx-auto mt-3 flex min-h-[36px] w-fit min-w-[222px] max-w-full items-center justify-center whitespace-nowrap rounded-[4px] border border-wyze-purple bg-white px-6 text-[15px] font-semibold text-wyze-purple transition-colors hover:bg-wyze-purple-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wyze-purple"
               onClick={onNext}
             >
-              Next {step.nextLabel}
+              Next: {step.nextLabel}
             </button>
-          ) : (
-            <p className="mt-4 rounded-[3px] border border-wyze-line bg-white px-4 py-3 text-center text-[13px] font-semibold text-wyze-muted">
-              Review your system on the right when everything looks good.
-            </p>
-          )}
+          ) : null}
 
           <span className="sr-only">
             {stepIndex + 1}/{totalSteps}
