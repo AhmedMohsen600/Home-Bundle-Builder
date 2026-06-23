@@ -145,13 +145,15 @@ describe('BundleBuilder', () => {
     expect(titleRow?.querySelector('svg')).toHaveAttribute('height', '27')
   })
 
-  it('does not render generated punctuation artifacts', () => {
+  it('renders task-specified next labels without generated punctuation artifacts', () => {
     render(<BundleBuilder catalog={sampleCatalog} />)
 
     const visibleText = document.body.textContent ?? ''
 
+    expect(
+      screen.getByRole('button', { name: 'Next: Choose your plan' }),
+    ).toBeInTheDocument()
     expect(visibleText).not.toMatch(/pain:/i)
-    expect(visibleText).not.toContain(':')
     expect(visibleText).not.toContain(';')
     expect(visibleText).not.toContain('__')
   })
@@ -160,11 +162,42 @@ describe('BundleBuilder', () => {
     const user = userEvent.setup()
     render(<BundleBuilder catalog={sampleCatalog} />)
 
-    await user.click(screen.getByRole('button', { name: 'Next Choose your plan' }))
+    await user.click(screen.getByRole('button', { name: 'Next: Choose your plan' }))
 
     expect(
-      screen.getByRole('button', { name: 'Next Choose your sensors' }),
+      screen.getByRole('button', { name: 'Next: Choose your sensors' }),
     ).toHaveClass('w-fit', 'max-w-full', 'whitespace-nowrap')
+  })
+
+  it('collapses the open accordion step when its header is clicked', async () => {
+    const user = userEvent.setup()
+    render(<BundleBuilder catalog={sampleCatalog} />)
+
+    expect(screen.getByTestId('step-content-cameras')).toBeInTheDocument()
+
+    await user.click(screen.getByText('Choose your cameras').closest('button')!)
+
+    expect(screen.queryByTestId('step-content-cameras')).not.toBeInTheDocument()
+  })
+
+  it('does not add instructional copy after the final step content', () => {
+    const finalOnlyCatalog: BundleCatalog = {
+      ...sampleCatalog,
+      steps: [
+        {
+          ...sampleCatalog.steps[0],
+          nextLabel: undefined,
+        },
+      ],
+    }
+
+    render(<BundleBuilder catalog={finalOnlyCatalog} />)
+
+    expect(
+      screen.queryByText(
+        'Review your system on the right when everything looks good.',
+      ),
+    ).not.toBeInTheDocument()
   })
 
   it('syncs variant quantities between product cards and the review panel', async () => {
