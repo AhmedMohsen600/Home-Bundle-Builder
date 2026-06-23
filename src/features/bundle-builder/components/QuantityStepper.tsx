@@ -4,7 +4,7 @@ interface QuantityStepperProps {
   label: string;
   quantity: number;
   onChange: (quantity: number) => void;
-  disabledDecrement?: boolean;
+  minQuantity?: number;
   testId?: string;
 }
 
@@ -12,7 +12,7 @@ export function QuantityStepper({
   label,
   quantity,
   onChange,
-  disabledDecrement = false,
+  minQuantity = 0,
   testId,
 }: QuantityStepperProps) {
   return (
@@ -23,7 +23,7 @@ export function QuantityStepper({
       <button
         type="button"
         aria-label={`Decrease ${label}`}
-        disabled={quantity <= 0 || disabledDecrement}
+        disabled={quantity <= minQuantity}
         className="grid size-[20px] place-items-center rounded-[4px] bg-white text-[#6f7882] border-2 border-[#E6EBF0]"
         onClick={() => {
           onChange(quantity - 1);
