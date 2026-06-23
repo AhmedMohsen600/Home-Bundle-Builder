@@ -17,6 +17,18 @@ const planLine: ReviewLine = {
   billing: '/mo',
 }
 
+const variantLine: ReviewLine = {
+  key: 'cam-v4:black',
+  productId: 'cam-v4',
+  variantId: 'black',
+  name: 'Wyze Cam v4 - Black',
+  category: 'cameras',
+  image: '/cam-black.png',
+  quantity: 1,
+  price: 27.99,
+  compareAt: 35.98,
+}
+
 describe('ReviewLineItem', () => {
   afterEach(() => {
     cleanup()
@@ -70,5 +82,30 @@ describe('ReviewLineItem', () => {
       'tracking-[0.005em]',
       'text-wyze-price',
     )
+  })
+
+  it('shows variant labels visibly so selected colors remain distinguishable', () => {
+    render(<ReviewLineItem line={variantLine} onSetQuantity={() => {}} />)
+
+    expect(screen.getByText('Wyze Cam v4 - Black')).not.toHaveClass('sr-only')
+  })
+
+  it('lets required lines decrement back to one after being increased', () => {
+    render(
+      <ReviewLineItem
+        line={{
+          ...planLine,
+          quantity: 2,
+          required: true,
+        }}
+        onSetQuantity={() => {}}
+      />,
+    )
+
+    expect(
+      screen.getByRole('button', {
+        name: 'Decrease Cam Unlimited review quantity',
+      }),
+    ).not.toBeDisabled()
   })
 })
