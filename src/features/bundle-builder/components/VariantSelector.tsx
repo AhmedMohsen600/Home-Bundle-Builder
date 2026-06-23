@@ -27,8 +27,8 @@ export function VariantSelector({
           className={cx(
             'inline-flex h-[24px] items-center gap-1 rounded-[2px] border px-1.5 text-[10px] font-medium leading-none transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wyze-purple',
             variant.id === activeVariantId
-              ? 'border-[#1dbfa6] bg-white text-wyze-text'
-              : 'border-wyze-line bg-white text-wyze-text hover:border-wyze-purple',
+              ? 'border-[hsla(170,88%,34%,1)] bg-[hsla(165,88%,53%,0.04)] text-wyze-text'
+              : 'border-[#CCCCCC] bg-white text-wyze-text hover:border-[hsla(170,88%,34%,1)]',
           )}
           title={variant.label}
           aria-label={`${variant.label} for ${product.title}`}
