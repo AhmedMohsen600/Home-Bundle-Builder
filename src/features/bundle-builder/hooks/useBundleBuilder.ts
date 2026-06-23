@@ -29,7 +29,9 @@ export function useBundleBuilder(catalog: BundleCatalog) {
   const totals = useMemo(() => getTotals(groups), [groups])
 
   const setActiveStep = useCallback((stepId: string) => {
-    setState((current) => activateStep(current, stepId))
+    setState((current) =>
+      activateStep(current, current.activeStepId === stepId ? '' : stepId),
+    )
   }, [])
 
   const goToNextStep = useCallback(
