@@ -74,17 +74,22 @@ describe('ReviewPanel', () => {
       'font-medium',
       'text-white',
     )
-    expect(totalRow).toHaveClass('flex', 'items-baseline', 'justify-end', 'gap-3')
+    expect(totalRow).toHaveClass(
+      'flex',
+      'items-baseline',
+      'justify-end',
+      'gap-[10px]',
+    )
     expect(screen.getByText('$238.81')).toHaveClass(
-      'text-[24px]',
-      'font-normal',
+      'text-[18px]',
+      'font-semibold',
       'leading-none',
       'text-wyze-discount',
       'line-through',
     )
     expect(screen.getByText('$187.89')).toHaveClass(
-      'text-[36px]',
-      'font-extrabold',
+      'text-[24px]',
+      'font-bold',
       'leading-none',
       'text-wyze-purple',
     )
