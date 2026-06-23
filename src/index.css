@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Gilroy', 'Avenir Next', Avenir, Montserrat, ui-sans-serif,
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --color-wyze-text: #16161d;
+  --color-wyze-muted: #696a78;
+  --color-wyze-soft: #8d91a0;
+  --color-wyze-line: #e0e3ed;
+  --color-wyze-panel: #edf3ff;
+  --color-wyze-panel-soft: #f6f8ff;
+  --color-wyze-card-selected: #836edf;
+  --color-wyze-card-discount: #d8392b;
+  --color-wyze-card-price: #575757;
+  --color-wyze-discount: #6f7882;
+  --color-wyze-price: #4e2fd2;
+  --color-wyze-purple: #4f35d5;
+  --color-wyze-purple-dark: #3924bd;
+  --color-wyze-purple-soft: #ebe7ff;
+  --color-wyze-green: #199075;
+  --color-wyze-danger: #b5644d;
+  --shadow-wyze-panel: 0 20px 44px rgb(44 48 77 / 0.11);
+  --shadow-wyze-step: 0 10px 24px rgb(44 48 77 / 0.06);
+}
+
+@layer base {
+  html {
+    color: var(--color-wyze-text);
+    background: #ffffff;
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+}
