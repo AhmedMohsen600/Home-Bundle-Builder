@@ -48,7 +48,7 @@ export function ProductCard({
       data-testid={`product-card-${product.id}`}
     >
       {product.badge ? (
-        <span className="absolute left-2 top-2 z-10 rounded-full bg-wyze-purple px-2 py-1 text-[10px] font-extrabold leading-none text-white">
+        <span className="absolute left-2 top-2 z-10 rounded-full bg-wyze-purple px-2 py-1 text-[10px] font-semibold leading-none text-white">
           {product.badge}
         </span>
       ) : null}
@@ -99,7 +99,7 @@ export function ProductCard({
             onChange={(nextQuantity) => {
               onSetQuantity(product.id, activeVariantId, nextQuantity);
             }}
-            disabledDecrement={product.required}
+            minQuantity={product.required ? 1 : 0}
             testId={`product-quantity-${product.id}`}
           />
           <PriceBlock
