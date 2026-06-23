@@ -15,7 +15,6 @@ interface ReviewLineItemProps {
 }
 
 export function ReviewLineItem({ line, onSetQuantity }: ReviewLineItemProps) {
-  const visibleName = line.name.replace(/ - (White|Grey|Black)$/, '')
   const isPlanLine = line.category === 'plan'
 
   return (
@@ -41,10 +40,7 @@ export function ReviewLineItem({ line, onSetQuantity }: ReviewLineItemProps) {
       )}
       <div className="min-w-0">
         <p className="text-[12px] font-medium leading-tight text-wyze-text">
-          {visibleName}
-          {visibleName !== line.name ? (
-            <span className="sr-only"> {line.name}</span>
-          ) : null}
+          {line.name}
         </p>
         {line.required ? (
           <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.08em] text-wyze-green">
@@ -59,7 +55,7 @@ export function ReviewLineItem({ line, onSetQuantity }: ReviewLineItemProps) {
           onChange={(nextQuantity) => {
             onSetQuantity(line.productId, line.variantId, nextQuantity)
           }}
-          disabledDecrement={line.required}
+          minQuantity={line.required ? 1 : 0}
           testId={`review-quantity-${line.key}`}
         />
       </div>
