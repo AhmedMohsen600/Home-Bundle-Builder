@@ -24,3 +24,8 @@ output/
 *.njsproj
 *.sln
 *.sw?
+.vercel
+.env
+.env.local
+.env.*.local
+!.env.example
